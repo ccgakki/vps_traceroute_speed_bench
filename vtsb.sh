@@ -240,7 +240,9 @@ runtest() {
   start_vtsb
 }
 
-start_speedtest(){}
+start_speedtest(){
+:
+}
 
 test_single(){
 	echo -e "${Info} 请输入你要测试的目标 ip :"
