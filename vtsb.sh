@@ -241,7 +241,7 @@ runtest() {
 }
 
 start_speedtest(){
-:
+ : 
 }
 
 test_single(){
