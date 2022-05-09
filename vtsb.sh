@@ -408,11 +408,11 @@ read -p "输入数字以选择:" function
 		test_all
 	elif [[ "${function}" == "3" ]]; then
 		test_single
-        elif [[ "${function}" == "4"]]; then
+        elif [[ "${function}" == "4" ]]; then
 		select_speedtest
-  	elif [[ "${function}" == "5"]]; then
+  	elif [[ "${function}" == "5" ]]; then
 		start_bench
-  	else [[ "${function}" == "6"]]; then
+  	else [[ "${function}" == "6" ]]; then
 		start_all
 	fi
 }
