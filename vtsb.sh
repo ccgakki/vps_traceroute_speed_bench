@@ -70,7 +70,7 @@ select_speedtest() {
 			fi
 	done
   if [[ $selection == 2]]
-  then
+   then
       start_vtsb
   else
       runtest
