@@ -69,7 +69,7 @@ select_speedtest() {
 	    break   
 	    fi
 	done
-	if [[ $selection == 2]]
+	if [[ $selection == 2 ]]
 	then
         start_vtsb
         else
@@ -240,9 +240,7 @@ runtest() {
   start_vtsb
 }
 
-start_speedtest(){
-
-}
+start_speedtest(){}
 
 test_single(){
 	echo -e "${Info} 请输入你要测试的目标 ip :"
@@ -408,13 +406,13 @@ read -p "输入数字以选择:" function
 		test_alternative
 	elif [[ "${function}" == "2" ]]; then
 		test_all
-	else [[ "${function}" == "3"]]; then
+	elif [[ "${function}" == "3" ]]; then
 		test_single
-  else [[ "${function}" == "4"]]; then
+        elif [[ "${function}" == "4"]]; then
 		select_speedtest
-  else [[ "${function}" == "5"]]; then
+  	elif [[ "${function}" == "5"]]; then
 		start_bench
-  else [[ "${function}" == "6"]]; then
+  	else [[ "${function}" == "6"]]; then
 		start_all
 	fi
 }
