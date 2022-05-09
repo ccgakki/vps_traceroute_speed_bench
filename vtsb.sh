@@ -18,10 +18,13 @@ export LC_ALL="en_US.utf8"
 check_system(){
 	if   [[ ! -z "`cat /etc/issue | grep -iE "debian"`" ]]; then
 		apt-get install traceroute mtr unzip -y
+		release=debian
 	elif [[ ! -z "`cat /etc/issue | grep -iE "ubuntu"`" ]]; then
 		apt-get install traceroute mtr unzip -y
+		release=ubuntu
 	elif [[ ! -z "`cat /etc/redhat-release | grep -iE "CentOS"`" ]]; then
 		yum install traceroute mtr unzip -y
+		release=centos
 	else
 		echo -e "${Error} system not support!" && exit 1
 	fi
@@ -414,7 +417,7 @@ read -p "输入数字以选择:" function
 		select_speedtest
   	elif [[ "${function}" == "5" ]]; then
 		start_bench
-  	else [[ "${function}" == "6" ]]; then
+  	else [[ "${function}" == "6" ]]
 		start_all
 	fi
 }
