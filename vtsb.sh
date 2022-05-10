@@ -139,7 +139,7 @@ runtest() {
 		 speed_test '44176' '河南郑州５Ｇ' '移动'
 		 speed_test '17320' '江苏镇江５Ｇ' '移动'
     #***
-     speed_test '' '本地' '本地'
+     speed_test '' '本地' 'Loca'
      speed_test '22168' '西雅图' 'Whit'
      speed_test '46052' '德国' 'Hetz'
      speed_test '44340' '香港' 'Tels'
@@ -397,6 +397,7 @@ test_all(){
 	result_all	'183.232.226.1'	  '广州移动183'
 	result_all	'202.205.6.30'		'北京教育网'
 	echo -e "${Info} 四网路由快速测试 已完成 ！"
+	start_vtsb
 }
 result_all(){
 	ISP_name=$2
