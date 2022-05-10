@@ -11,6 +11,14 @@ echo -e "${Green_font}
 # Author: ccgakki
 #======================================
 ${Font_suffix}"
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE="\033[0;35m"
+CYAN='\033[0;36m'
+PLAIN='\033[0m'
 
 #set language utf-8
 export LC_ALL="en_US.utf8"
@@ -62,7 +70,7 @@ install_speedtest(){
 
 select_speedtest() {
 	echo -e "  测速类型:    ${GREEN}1.${PLAIN} VPS本地+国内三网+国际测速    ${GREEN}2.${PLAIN} 返回主菜单"
-	echo -ne "               ${GREEN}3.${PLAIN} 电信节点    ${GREEN}4.${PLAIN} 联通节点    ${GREEN}5.${PLAIN} 移动节点"
+	echo -ne "               ${GREEN}3.${PLAIN} 电信节点    ${GREEN}4.${PLAIN} 联通节点    ${GREEN}5.${PLAIN} 移动节点\n"
 	while :
         do 
 	    read -p "  请输入数字选择测速类型: " selection
@@ -117,7 +125,7 @@ runtest() {
     
     #***
 		 speed_test '3633' '上海' '电信'
-		 speed_test '41852' '河南郑州' '电信'
+		 speed_test '17145' '安徽合肥' '电信'
 		 speed_test '27377' '北京５Ｇ' '电信'
 		 speed_test '26352' '江苏南京５Ｇ' '电信'
     #***
@@ -283,7 +291,7 @@ test_alternative(){
 	result_alternative
 }
 select_alternative(){
-	echo -e "${Info} 选择需要测试的目标网络: \n1.中国电信\n2.中国联通\n3.中国移动\n4.教育网"
+	echo -e "${Info} 选择需要测试的目标网络: \n1.中国电信\n2.中国联通\n3.中国移动\n4.教育网\n"
 	read -p "输入数字以选择:" ISP
 
 	while [[ ! "${ISP}" =~ ^[1-4]$ ]]
