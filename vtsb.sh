@@ -91,7 +91,7 @@ select_speedtest() {
 speed_test(){
 	speedLog="./speedtest.log"
 	true > $speedLog
-		speedtest -p no -s $1 --accept-license > $speedLog 2>&1
+		speedtest -p no --server-id=$1 --accept-license > $speedLog 2>&1
 		is_upload=$(cat $speedLog | grep 'Upload')
 		if [[ ${is_upload} ]]; then
 	        local REDownload=$(cat $speedLog | awk -F ' ' '/Download/{print $3}')
@@ -108,7 +108,7 @@ speed_test(){
 			
 			temp=$(echo "${REDownload}" | awk -F ' ' '{print $1}')
 	        if [[ $(awk -v num1=${temp} -v num2=0 'BEGIN{print(num1>num2)?"1":"0"}') -eq 1 ]]; then
-	        	printf "${RED}%-6s${YELLOW}%s%s${GREEN}%-24s${CYAN}%s%-10s${BLUE}%s%-10s${PURPLE}%-8s${PLAIN}\n" "${nodeID}"  "${nodeISP}" "|" "${strnodeLocation:0:24}" "↑ " "${reupload}" "↓ " "${REDownload}" "${relatency}" | tee -a $log
+	        	printf "${RED}%-6s${YELLOW}%s%s${GREEN}%s${CYAN}%-8s%-10s${BLUE}%s%-10s${PURPLE}%-8s${PLAIN}\n" "${nodeID}"  "${nodeISP}" "|" "${strnodeLocation:0:8}" "↑ " "${reupload}" "↓ " "${REDownload}" "${relatency}" | tee -a $log
 			fi
 		else
 	        local cerror="ERROR"
@@ -122,29 +122,28 @@ runtest() {
 		echo "——————————————————————————————————————————————————————————"
 		echo "ID    测速服务器信息       上传/Mbps   下载/Mbps   延迟/ms"
 		start=$(date +%s) 
-    
-    #***
+    		 #***
 		 speed_test '3633' '上海' '电信'
-		 speed_test '17145' '安徽合肥' '电信'
+		 speed_test '34988' '辽宁沈阳5G' '电信'
 		 speed_test '27377' '北京５Ｇ' '电信'
 		 speed_test '26352' '江苏南京５Ｇ' '电信'
-    #***
+		 #***
 		 speed_test '24447' '上海５Ｇ' '联通'
 		 speed_test '27154' '天津５Ｇ' '联通'
-		 speed_test '13704' '江苏南京' '联通'
+		 speed_test '45170' '江苏无锡' '联通'
 		 speed_test '5485' '湖北武汉' '联通'
-		#***
+		 #***
 		 speed_test '25858' '北京' '移动'
 		 speed_test '26404' '安徽合肥５Ｇ' '移动'
-		 speed_test '17584' '重庆' '移动'
-		 speed_test '29105' '陕西西安５Ｇ' '移动'
+		 speed_test '44176' '河南郑州５Ｇ' '移动'
+		 speed_test '17320' '江苏镇江５Ｇ' '移动'
     #***
-     speed_test '' 'Speedtest.net' '本地'
-     speed_test '22168' '美国西雅图' 'Whitesky'
+     speed_test '' 'Speedtest' 'Local'
+     speed_test '22168' '西雅图' 'Whitesky'
      speed_test '46052' '德国' 'Hetzner'
      speed_test '44340' '香港' 'Telstra'
-     speed_test '31293' '新加坡' 'Pacific Internet'
-     speed_test '28910' '日本' 'fdcservers'
+     speed_test '31293' '新加坡' 'Pacific'
+     speed_test '28910' '日本' 'FDC'
 
 		end=$(date +%s)  
 		rm -rf speedtest*
