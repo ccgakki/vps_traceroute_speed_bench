@@ -2,7 +2,7 @@
 vps_traceroute_speed_bench,a convenient script to test your server's speed/route/bench .
 
 Based on :
-[Worsttrace](https://t.me/WorstTrace)
+[Worsttrace](https://wtrace.app/)
 [Speedtest](https://www.speedtest.net)
 
 # Usage
