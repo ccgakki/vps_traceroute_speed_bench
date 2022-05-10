@@ -9,6 +9,7 @@ echo -e "${Green_font}
 # Project: vps_traceroute_speed_bench
 # Version: 1.0
 # Author: ccgakki
+#Do not use in production environment
 #======================================
 ${Font_suffix}"
 # Colors
@@ -138,12 +139,12 @@ runtest() {
 		 speed_test '44176' '河南郑州５Ｇ' '移动'
 		 speed_test '17320' '江苏镇江５Ｇ' '移动'
     #***
-     speed_test '' 'Speedtest' 'Local'
-     speed_test '22168' '西雅图' 'Whitesky'
-     speed_test '46052' '德国' 'Hetzner'
-     speed_test '44340' '香港' 'Telstra'
-     speed_test '31293' '新加坡' 'Pacific'
-     speed_test '28910' '日本' 'FDC'
+     speed_test '' 'Local' '本地'
+     speed_test '22168' '西雅图' 'Whit'
+     speed_test '46052' '德国' 'Hetz'
+     speed_test '44340' '香港' 'Tels'
+     speed_test '31293' '新加坡' 'Paci'
+     speed_test '28910' '日本' 'FDCs'
 
 		end=$(date +%s)  
 		rm -rf speedtest*
@@ -378,6 +379,7 @@ repeat_test_alternative(){
 
 start_bench(){
   echo "咕咕咕"
+  curl -sL https://raw.githubusercontent.com/ccgakki/across/master/bench.sh | bash
   start_vtsb
 }
 
