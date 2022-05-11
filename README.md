@@ -7,8 +7,8 @@ Based on :
 
 # Usage
 ```shell
-wget https://raw.githubusercontent.com/ccgakki/worst_testrace/main/worst_testrace.sh
-bash worst_testrace.sh
+wget https://raw.githubusercontent.com/ccgakki/vps_traceroute_speed_bench/main/vtsb.sh
+bash vtsb.sh
 ```
 
 # Acknowledgement
