@@ -53,7 +53,7 @@ install_worsttrace(){
 }
 
 install_speedtest(){
-    if  [ ! -e '/bin/speedtest' && ]; then
+    if  [ ! -e '/bin/speedtest' ]; then
       echo "正在安装 Speedtest-cli"
 	    if  [[ ${release} == debian || ${release} == ubuntu ]] ; then
 	      curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
