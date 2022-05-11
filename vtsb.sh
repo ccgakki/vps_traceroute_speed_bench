@@ -53,7 +53,7 @@ install_worsttrace(){
 }
 
 install_speedtest(){
-    if  [ ! -e '/bin/speedtest' ]; then
+    if  [ ! -e '/bin/speedtest' && ]; then
       echo "正在安装 Speedtest-cli"
 	    if  [[ ${release} == debian || ${release} == ubuntu ]] ; then
 	      curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
@@ -67,7 +67,7 @@ install_speedtest(){
 	    fi
     else
       echo "已经安装speedtest-cli"
-      apt-get remove speedtest ; yum remove speedtest
+      #apt-get remove speedtest ; #yum remove speedtest
       
     fi
     
@@ -151,7 +151,7 @@ runtest() {
      speed_test '28910' '日本' 'FDCs'
 
 		end=$(date +%s)  
-		rm -rf speedtest*
+		#rm -rf speedtest*
 		echo "——————————————————————————————————————————————————————————"
 		time=$(( $end - $start ))
 		if [[ $time -gt 60 ]]; then
@@ -182,7 +182,7 @@ runtest() {
 		 speed_test '28225' '湖南长沙５Ｇ' '电信'
 
 		end=$(date +%s)  
-		rm -rf speedtest*
+		#rm -rf speedtest*
 		echo "——————————————————————————————————————————————————————————"
 		time=$(( $end - $start ))
 		if [[ $time -gt 60 ]]; then
@@ -210,7 +210,7 @@ runtest() {
 		 speed_test '2461' '四川成都' '联通'
 		 speed_test '27154' '天津５Ｇ' '联通'
 		end=$(date +%s)  
-		rm -rf speedtest*
+		#rm -rf speedtest*
 		echo "——————————————————————————————————————————————————————————"
 		time=$(( $end - $start ))
 		if [[ $time -gt 60 ]]; then
@@ -239,7 +239,7 @@ runtest() {
 		 speed_test '4647' '浙江杭州' '移动'
 
 		end=$(date +%s)  
-		rm -rf speedtest*
+		#rm -rf speedtest*
 		echo "——————————————————————————————————————————————————————————"
 		time=$(( $end - $start ))
 		if [[ $time -gt 60 ]]; then
@@ -436,7 +436,7 @@ read -p "输入数字以选择:" function
 	fi
 }
 
-apt install wget -y ; yum install wget -y
+apt install curl -y ; yum install curl -y
 check_system
 check_root
 install_worsttrace
