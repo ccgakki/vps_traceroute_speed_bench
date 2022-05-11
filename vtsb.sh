@@ -44,7 +44,7 @@ check_root(){
 
 install_worsttrace(){
 	if [[ -e /usr/local/bin/worsttrace ]];then
-		echo "已经安装"
+		echo "已经安装worsttrace"
 	else
 		[[ ! -f /usr/local/bin/worsttrace ]] && wget https://pkg.wtrace.app/linux/worsttrace -O /usr/local/bin/worsttrace
 		[[ ! -f /usr/local/bin/worsttrace ]] && echo -e "${Error} download failed, please check!" && exit 1
@@ -55,22 +55,22 @@ install_worsttrace(){
 install_speedtest(){
     if  [ ! -e '/bin/speedtest' ]; then
       echo "正在安装 Speedtest-cli"
-
+	    if  [[ ${release} == debian || ${release} == ubuntu ]] ; then
+	      curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
+	      apt-get install speedtest
+	    elif [ ${release} == "centos" ] ; then
+	      curl -s https://install.speedtest.net/app/cli/install.rpm.sh |  bash
+	      yum install speedtest
+	    else
+	      echo "不是合适的版本"
+	      exit
+	    fi
     else
-      echo "已经安装，请先卸载"
+      echo "已经安装speedtest-cli"
       apt-get remove speedtest ; yum remove speedtest
-      exit
+      
     fi
-    if  [[ ${release} == debian || ${release} == ubuntu ]] ; then
-      curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
-      apt-get install speedtest
-    elif [ ${release} == "centos" ] ; then
-      curl -s https://install.speedtest.net/app/cli/install.rpm.sh |  bash
-      yum install speedtest
-    else
-      echo "不是合适的版本"
-      exit
-    fi
+    
 }
 
 select_speedtest() {
