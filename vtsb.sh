@@ -43,13 +43,17 @@ check_root(){
 }
 
 install_worsttrace(){
-	[[ ! -f /usr/local/bin/worsttrace ]] && wget https://pkg.wtrace.app/linux/worsttrace -O /usr/local/bin/worsttrace
-	[[ ! -f /usr/local/bin/worsttrace ]] && echo -e "${Error} download failed, please check!" && exit 1
-	chmod a+x /usr/local/bin/worsttrace
+	if [[ -e /usr/local/bin/worsttrace ]];then
+		echo "已经安装"
+	else
+		[[ ! -f /usr/local/bin/worsttrace ]] && wget https://pkg.wtrace.app/linux/worsttrace -O /usr/local/bin/worsttrace
+		[[ ! -f /usr/local/bin/worsttrace ]] && echo -e "${Error} download failed, please check!" && exit 1
+		chmod a+x /usr/local/bin/worsttrace
+	fi
 }
 
 install_speedtest(){
-    if  [ ! -e './speedtest-cli/speedtest' ]; then
+    if  [ ! -e '/bin/speedtest' ]; then
       echo "正在安装 Speedtest-cli"
 
     else
